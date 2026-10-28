@@ -1,0 +1,10 @@
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (por si se agrega en el futuro)
+node_modules/

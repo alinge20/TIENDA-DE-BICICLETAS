@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiciStore — Tienda de Bicicletas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">🚲 BiciStore</a>
+            <nav class="nav" id="mainNav">
+                <a href="#inicio" class="nav-link active">Inicio</a>
+                <a href="#productos" class="nav-link">Productos</a>
+                <a href="#categorias" class="nav-link">Categorías</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar producto..." autocomplete="off">
+                    <button class="search-btn" id="searchBtn">🔍</button>
+                </div>
+                <button class="cart-toggle" id="cartToggle">
+                    🛒 <span class="badge" id="cartBadge">0</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <span class="hero-tag">Nuevos modelos 2026</span>
+            <h1>Pedalea hacia tu próxima aventura</h1>
+            <p>Bicicletas, repuestos, cascos y accesorios para todo tipo de ciclista. Calidad garantizada y los mejores precios de Colombia.</p>
+            <div class="hero-buttons">
+                <a href="#productos" class="btn btn-primary">Ver Catálogo</a>
+                <a href="#categorias" class="btn btn-outline">Categorías</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><strong>150+</strong><span>Productos</span></div>
+                <div class="stat"><strong>2,000+</strong><span>Clientes</span></div>
+                <div class="stat"><strong>⭐ 4.8</strong><span>Valoración</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="categories-section" id="categorias">
+        <div class="container">
+            <h2 class="section-title">Categorías</h2>
+            <div class="categories-grid">
+                <div class="cat-card" data-cat="bicicletas">
+                    <div class="cat-icon">🚲</div>
+                    <h3>Bicicletas</h3>
+                    <p>Montaña, ruta, urbanas y BMX</p>
+                </div>
+                <div class="cat-card" data-cat="repuestos">
+                    <div class="cat-icon">⚙️</div>
+                    <h3>Repuestos</h3>
+                    <p>Llantas, cadenas, frenos y más</p>
+                </div>
+                <div class="cat-card" data-cat="cascos">
+                    <div class="cat-icon">⛑️</div>
+                    <h3>Cascos</h3>
+                    <p>Protección para cada estilo</p>
+                </div>
+                <div class="cat-card" data-cat="accesorios">
+                    <div class="cat-icon">🎒</div>
+                    <h3>Accesorios</h3>
+                    <p>Luces, candados, botellas y más</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos -->
+    <section class="products-section" id="productos">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <div class="toolbar">
+                <div class="filter-chips">
+                    <button class="chip active" data-filter="todos">Todos</button>
+                    <button class="chip" data-filter="bicicletas">Bicicletas</button>
+                    <button class="chip" data-filter="repuestos">Repuestos</button>
+                    <button class="chip" data-filter="cascos">Cascos</button>
+                    <button class="chip" data-filter="accesorios">Accesorios</button>
+                </div>
+                <select class="sort-select" id="sortSelect">
+                    <option value="default">Ordenar por</option>
+                    <option value="precio-asc">Precio: Menor a Mayor</option>
+                    <option value="precio-desc">Precio: Mayor a Menor</option>
+                    <option value="nombre">Nombre A-Z</option>
+                </select>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Carrito -->
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <aside class="cart-panel" id="cartPanel">
+        <div class="cart-top">
+            <h2>🛒 Mi Carrito</h2>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <p class="empty-msg">No hay productos en tu carrito</p>
+        </div>
+        <div class="cart-bottom" id="cartBottom" style="display:none">
+            <div class="total-row">
+                <span>Total</span>
+                <strong id="totalAmount">$0</strong>
+            </div>
+            <button class="btn btn-primary btn-block" id="buyBtn">Comprar Ahora</button>
+        </div>
+    </aside>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modalBg">
+        <div class="modal-box">
+            <div class="modal-check">✓</div>
+            <h2>¡Pedido Simulado!</h2>
+            <p>Esta es una tienda de demostración. En producción aquí se procesaría el pago real.</p>
+            <button class="btn btn-primary" id="modalDone">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Contacto -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div>
+                            <strong>Dirección</strong>
+                            <p>Bogotá, Colombia</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div>
+                            <strong>Teléfono</strong>
+                            <p>318 981 5002</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>info@bicistore.co</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🕐</span>
+                        <div>
+                            <strong>Horario</strong>
+                            <p>Lun - Sáb: 8am - 6pm</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Tu nombre" required>
+                    <input type="email" placeholder="Tu email" required>
+                    <textarea placeholder="Tu mensaje" rows="4" required></textarea>
+                    <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>
+                <h3>🚲 BiciStore</h3>
+                <p>Tu tienda de bicicletas de confianza en Colombia.</p>
+            </div>
+            <div>
+                <h4>Navegación</h4>
+                <a href="#inicio">Inicio</a>
+                <a href="#productos">Productos</a>
+                <a href="#categorias">Categorías</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div>
+                <h4>Categorías</h4>
+                <a href="#productos">Bicicletas</a>
+                <a href="#productos">Repuestos</a>
+                <a href="#productos">Cascos</a>
+                <a href="#productos">Accesorios</a>
+            </div>
+        </div>
+        <div class="footer-bar">
+            <p>&copy; 2026 BiciStore — Proyecto de Allison Guerrero</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
